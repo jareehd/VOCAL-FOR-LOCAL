@@ -49,6 +49,12 @@ const userSchema = new mongoose.Types.Schema({
     }
 })
 
+userSchema.virtual('blogs' , {
+    ref : 'Blog' ,
+    localField : '_id' ,
+    foreignField : 'owner'
+})
+
 userSchema.statics.findByCredentials = async (email, password) => {
     const user = await User.findOne({ email })
     if (!user)  throw new Error('Either email or password is incorrect')
