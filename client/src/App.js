@@ -3,6 +3,10 @@ import SignIn from './Components/SignIn'
 import SignUp from './Components/SignUp'
 import { HashRouter as Router, Switch } from "react-router-dom";
 import { LoginPrivateRoute } from "./Components/LoginPrivateRoute";
+import { PrivateRoute } from "./Components/PrivateRoute";
+import LandingPage from "./Components/LandingPage";
+import Header from './Components/Header';
+
 
 function App() {
   return (
@@ -11,7 +15,15 @@ function App() {
         <Switch>
           <LoginPrivateRoute exact path="/" component={SignIn} />
           <LoginPrivateRoute path="/register" component={SignUp} />
+          <Router>
+          <Header/>
+          <Switch>
+           <PrivateRoute path="/landingpage" component={LandingPage} />
+          
           </Switch>
+          </Router>
+          </Switch>
+        
           </Router>
     </div>
   );
