@@ -5,6 +5,7 @@ import { HashRouter as Router, Switch } from "react-router-dom";
 import { LoginPrivateRoute } from "./Components/LoginPrivateRoute";
 import { PrivateRoute } from "./Components/PrivateRoute";
 import LandingPage from "./Components/LandingPage";
+import Header from './Components/Header';
 
 
 function App() {
@@ -14,7 +15,13 @@ function App() {
         <Switch>
           <LoginPrivateRoute exact path="/" component={SignIn} />
           <LoginPrivateRoute path="/register" component={SignUp} />
-          <PrivateRoute path="/landingpage" component={LandingPage} />
+          <Router>
+          <Header/>
+          <Switch>
+           <PrivateRoute path="/landingpage" component={LandingPage} />
+          
+          </Switch>
+          </Router>
           </Switch>
         
           </Router>
