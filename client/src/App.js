@@ -6,7 +6,8 @@ import { LoginPrivateRoute } from "./Components/LoginPrivateRoute";
 import { PrivateRoute } from "./Components/PrivateRoute";
 import LandingPage from "./Components/LandingPage";
 import Header from './Components/Header';
-import MyProfile from './Components/MyProfile'
+import MyProfile from './Components/MyProfile';
+import UploadPost from "./Components/UploadPost";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
            <Switch>
            <PrivateRoute path="/landingpage" component={LandingPage} />
            <PrivateRoute path="/profile" component={MyProfile}/>
+           <PrivateRoute path="/upload" component={UploadPost}/>
            </Switch>
           </Router>
         </Switch>

@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .Updatepage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  /* .Updatecontainer{
+      height: 300px;
+      width: 300px;
+      border-radius: 10px;
+      background-color: rgba(255, 255, 255, 0.5);
+      
+    } */
+  .Updateheading {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 1rem;
+    font-weight: bold;
+  }
+  .Updateimg-holder {
+    margin: auto;
+    width: 550px;
+    height: 550px;
+    
+    border:none;
+    margin-top: 1rem;
+  }
+  .Updateimg {
+    width: 550px;
+    height: 550px;
+    object-fit: cover;
+  }
+  .TextField {
+    width: 550px;
+  }
+  .TextField{
+      border: black;
+  }
+  
+  #Updateinput[type="file"] {
+    display: none;
+  }
+  .Updatelabel {
+    margin: auto;
+    width: 550px;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+  }
+  .Updatelabel button {
+    width: 100%;
+  }
+  .Updateimage-upload {
+    /* margin: auto;
+      width: 200px;
+      height: 50px;
+      color: white;
+      border-radius: 10px;
+      background-color: black;
+      justify-content: center;
+      text-align: center;
+      cursor: pointer;
+      padding: 2%; */
+    width: 100%;
+  }
+  
