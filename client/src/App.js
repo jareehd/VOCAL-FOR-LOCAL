@@ -6,7 +6,7 @@ import { LoginPrivateRoute } from "./Components/LoginPrivateRoute";
 import { PrivateRoute } from "./Components/PrivateRoute";
 import LandingPage from "./Components/LandingPage";
 import Header from './Components/Header';
-
+import MyProfile from './Components/MyProfile'
 
 function App() {
   return (
@@ -17,14 +17,13 @@ function App() {
           <LoginPrivateRoute path="/register" component={SignUp} />
           <Router>
           <Header/>
-          <Switch>
+           <Switch>
            <PrivateRoute path="/landingpage" component={LandingPage} />
-          
-          </Switch>
+           <PrivateRoute path="/profile" component={MyProfile}/>
+           </Switch>
           </Router>
-          </Switch>
-        
-          </Router>
+        </Switch>
+      </Router>
     </div>
   );
 }
