@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Grid, InputAdornment, TextField } from "@material-ui/core";
+import { Button, Grid, TextField } from "@material-ui/core";
 import MenuItem from '@material-ui/core/MenuItem';
 import { Redirect } from 'react-router';
 import "./UploadPost.css";
@@ -184,14 +184,14 @@ export class UploadPost extends Component {
               </TextField>
           
           <div style={{ height: 20 }} />
-          <Button
+          {/* <Button
             color="primary"
             variant="contained"
             onClick={(e) => this.submit(e)}
             style={{ width: "450px" }}
           >
             Upload
-          </Button>
+          </Button> */}
 
           <Grid
             container
@@ -227,6 +227,7 @@ export class UploadPost extends Component {
              <MenuItem key={state.id} value={state}  > {state.name} </MenuItem>
            )}
                </TextField>
+
                <div style={{ height: 20 }} />
                <TextField
                  className="TextField"
