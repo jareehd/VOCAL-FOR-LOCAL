@@ -8,6 +8,7 @@ import LandingPage from "./Components/LandingPage";
 import Header from './Components/Header';
 import MyProfile from './Components/MyProfile';
 import UploadPost from "./Components/UploadPost";
+import UpdateProfile from "./Components/UpdateProfile";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
            <Switch>
            <PrivateRoute path="/landingpage" component={LandingPage} />
            <PrivateRoute path="/profile" component={MyProfile}/>
+           <PrivateRoute path="/update" component={UpdateProfile}/>
            <PrivateRoute path="/upload" component={UploadPost}/>
            </Switch>
           </Router>

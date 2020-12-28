@@ -1,0 +1,62 @@
+*{
+    margin: 0;
+    padding: 0;
+  }
+  
+  .Updatepage{
+    
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+  }
+  /* .Updatecontainer{
+    height: 300px;
+    width: 300px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    
+  } */
+  .Updateheading{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 1rem;
+    font-weight: bold;
+  
+  }
+  .Updateimg-holder{
+    margin: auto;
+    width: 150px;
+    height: 150px;
+    
+    border-radius: 5px;
+    margin-top: 1rem;
+  }
+  .Updateimg{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+  }
+  #Updateinput[type="file"] {
+      display: none;
+  }
+  .Updatelabel{
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+  }
+  .Updateimage-upload{
+    /* margin: auto;
+    width: 200px;
+    height: 50px;
+    color: white;
+    border-radius: 10px;
+    background-color: black;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    padding: 2%; */
+    width: 100%;
+  }
