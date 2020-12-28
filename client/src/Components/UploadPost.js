@@ -8,19 +8,28 @@ import * as UploadPostLink from "../Constant";
 import * as StateCity from '../StateCity';
 import imageCompression from 'browser-image-compression'
 
+
 export class UploadPost extends Component {
   state = {
     profileImg: null,
     profileImgUrl:"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
     title: null,
     description: null,
-    State:StateCity.state.states[0],
-    city:"",
-    redirect:false
+
+    redirect:false,
+    state: StateCity.state.states[0],
+    city: "",
+    
+
   };
   
-  handleChange = (input) => (e) => {
-    this.setState({ [input]: e.target.value });
+  handleChangeState = (e) => {
+    console.log(e.target.value)
+    this.setState({State: e.target.value.state });
+  };
+  
+  handleChangeCity = (e) => {
+    this.setState({ city: e.target.value });
   };
 
   imageHandler = async (e) => {
@@ -28,6 +37,7 @@ export class UploadPost extends Component {
     var options = {
       maxSizeMB: 0.2
     }
+
     const output = await imageCompression(image, options)
     console.log(output)
     this.setState({profileImg:output})
@@ -46,13 +56,13 @@ export class UploadPost extends Component {
       
       if(this.state.description !== null)
         formData.append('description',this.state.description)
-      
-      if(this.state.State !== null)
-        formData.append('ownerState',this.state.State)
-     
-      if(!!this.state.city)
-        formData.append('ownerCity',this.state.city)
-      
+
+        if (this.state.city !== "") {
+          formData.append("state", this.state.state.name);
+          formData.append("city", this.state.city);
+        }
+
+
       const token = localStorage.getItem("token");
 
       const config = {
@@ -74,6 +84,9 @@ export class UploadPost extends Component {
         .catch((error) => {
           console.log(error);
         });
+  };
+  handleChange = (input) => (e) => {
+    this.setState({ [input]: e.target.value });
   };
 
   render() {
@@ -135,8 +148,51 @@ export class UploadPost extends Component {
             }}
           />
           <div style={{ height: 20 }} />
+
+              <TextField
+                className="TextField"
+                id="outlined-basic"
+                label="State"
+                variant="outlined"
+                style={{ width: "300px" }}
+                select
+                onChange={this.handleChange("state")}
+              >
+                {StateCity.state.states.map((state, index) => (
+                  <MenuItem key={state.id} value={state}>
+                    {" "}
+                    {state.name}{" "}
+                  </MenuItem>
+                ))}
+              </TextField>
+              <div style={{ height: 20 }} />
+              <TextField
+                className="TextField"
+                id="outlined-basic"
+                label="City"
+                variant="outlined"
+                style={{ width: "300px" }}
+                select
+                onChange={this.handleChange("city")}
+              >
+                {this.state.state.districts.map((city, index) => (
+                  <MenuItem key={city.id} value={city.name}>
+                    {" "}
+                    {city.name}{" "}
+                  </MenuItem>
+                ))}
+              </TextField>
           
-          
+          <div style={{ height: 20 }} />
+          <Button
+            color="primary"
+            variant="contained"
+            onClick={(e) => this.submit(e)}
+            style={{ width: "450px" }}
+          >
+            Upload
+          </Button>
+
           <Grid
             container
             item
@@ -159,20 +215,18 @@ export class UploadPost extends Component {
           </Grid>
 
           <div style={{ height: 20 }} />
-               <TextField        className="TextField"
+               {/* <TextField        className="TextField"
                                  id="outlined-basic"
                                  label="State"
              	                  variant="outlined"
                                style={{width:"550px"}}
                  select
-                 onChange={this.handleChange("State")}
-
+                 onChange={this.handleChangeState}
                >
                  {(StateCity.state.states).map((state, index) =>
              <MenuItem key={state.id} value={state}  > {state.name} </MenuItem>
            )}
                </TextField>
-
                <div style={{ height: 20 }} />
                <TextField
                  className="TextField"
@@ -181,13 +235,12 @@ export class UploadPost extends Component {
                  variant="outlined"
                  style={{width:"550px"}}
                  select
-                 onChange={this.handleChange("city")}
-
+                 onChange={this.handleChangeCity}
                >
                  {(this.state.State.districts).map((city, index) =>
              <MenuItem key={city.id} value={city.name}  > {city.name} </MenuItem>
            )}
-               </TextField>
+               </TextField> */}
                <Grid
             container
             item
