@@ -14,6 +14,7 @@ const secret = process.env.jwt_secret
 
 router.post('/signup' ,async function (req,res){
     const user = new User(req.body)
+    console.log(req.body)
     try {
         const token = jwt.sign({ _id: user._id.toString() } , secret)
         await user.save()
