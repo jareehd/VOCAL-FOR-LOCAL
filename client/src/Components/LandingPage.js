@@ -12,10 +12,31 @@ const LandingPage = () => {
   const [loading,setLoading] =useState(true)
   const [states,setStates] = useState( StateCity.state.states[0])
   const [city,setCity] = useState("")
+  const url = AllPostsLink.Link.baseUrl.AllPostsUrl;
+  
+  const onFilterPost = async () =>{
+    if(states || city){
+      const Axios = axios.create({
+        baseURL:url,
+        headers:{
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        },
+        params:{
+          state:states.name,
+          city:city
+        }
+    })
+  
+    try{
+      const res = await Axios.get()
+      setItems(res.data)
+    } catch(e){
+      console.log(e)
+    }
+  }
+} 
 
   useEffect(()=>{
-    
-    const url = AllPostsLink.Link.baseUrl.AllPostsUrl;
     const Axios = axios.create({
       baseURL:url,
       headers:{
@@ -94,7 +115,7 @@ const LandingPage = () => {
                 color="primary"
                 variant="contained"
                 style={{width: "300px"}}
-                
+                onClick={onFilterPost}
               >
                 <b>Filter Posts</b>
               </Button>
