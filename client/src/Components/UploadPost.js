@@ -46,23 +46,26 @@ export class UploadPost extends Component {
 
   submit = (e) => {
       
+    if( !this.state.profileImg || !this.state.profileImgUrl || !this.state.title || !this.state.description ){
+      alert("Please Enter all the Information");
+    }
+    else {
       let formData = new FormData();
       
-      if(this.state.profileImg !== null)
+      if (this.state.profileImg !== null)
         formData.append('media',this.state.profileImg)
       
-      if(this.state.title !== null)
+      if (this.state.title !== null)
         formData.append('title',this.state.title)
       
-      if(this.state.description !== null)
+      if (this.state.description !== null)
         formData.append('description',this.state.description)
 
-        if (this.state.city !== "") {
-          formData.append("state", this.state.state.name);
-          formData.append("city", this.state.city);
-        }
-
-
+      if (this.state.city !== "") {
+        formData.append("ownerState", this.state.state.name);
+        formData.append("ownerCity", this.state.city);
+      }
+      
       const token = localStorage.getItem("token");
 
       const config = {
@@ -84,13 +87,14 @@ export class UploadPost extends Component {
         .catch((error) => {
           console.log(error);
         });
+      }
   };
   handleChange = (input) => (e) => {
     this.setState({ [input]: e.target.value });
   };
 
   render() {
-    const { profileImgUrl } = this.state;
+    const { profileImgUrl , profileImg , title, description , state , city } = this.state;
     if(this.state.redirect)
     {
       return <Redirect push to="/landingpage" />;

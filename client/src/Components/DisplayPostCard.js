@@ -133,6 +133,7 @@ export default function DisplayPostCard({item}) {
       />
       <CardContent> 
         <Typography variant="body2" color="textSecondary" component="p">
+          
           {item.ownerName && item.ownerName.toUpperCase()}  / {item.ownerCity} { item.ownerState} 
         </Typography>
       </CardContent>
