@@ -36,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
   media: {
     height: 0,
     paddingTop: "56.25%", // 16:9
+    
   },
   expand: {
     transform: "rotate(0deg)",
@@ -50,6 +51,9 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     backgroundColor: red[500],
   },
+  title: {
+    fontSize: 24,
+  }
 }));
 
 export default function DisplayPostCard({item}) {
@@ -114,7 +118,7 @@ export default function DisplayPostCard({item}) {
     <Card className={classes.root}>
       <CardHeader
         avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
+          <Avatar  className={classes.avatar}>
              {item.ownerName.slice(0,1).toUpperCase()} 
           </Avatar>
         }
@@ -124,7 +128,7 @@ export default function DisplayPostCard({item}) {
           </IconButton>
         }
         title={item.title}
-        subheader={item.updatedAt.slice(11,19)+ "  " + item.updatedAt.slice(0,10)} 
+        subheader={item.updatedAt.slice(11,16)+ " , " + item.updatedAt.slice(0,10)} 
       />
       <CardMedia
         className={classes.media}
