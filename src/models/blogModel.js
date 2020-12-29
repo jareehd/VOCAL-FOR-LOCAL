@@ -25,6 +25,12 @@ const blogSchema = new mongoose.Schema({
             type : String
         }
     }],
+    liked:{
+        type:Boolean
+    },
+    likesCount:{
+        type:Number
+    },
     owner : {
         type : mongoose.Schema.Types.ObjectId,
         ref : 'User'
@@ -33,11 +39,19 @@ const blogSchema = new mongoose.Schema({
     timestamps : true
 })
 
+
 blogSchema.methods.increaseLike = async function ( likedBy ) {
-    // console.log(likedBy)
     this.likes = this.likes.concat({likedBy})
+    this.likesCount = this.likes.length
     await this.save()
-    return
+    return this.likesCount
+}
+
+blogSchema.methods.decreaseLike = async function(likedBy) {
+    this.likes = this.likes.filter( (id) => { return id.likedBy !== likedBy } )
+    this.likesCount = this.likes.length
+    await this.save()
+    return  this.likesCount
 }
 
 const Blog = mongoose.model( 'Blog' , blogSchema )
