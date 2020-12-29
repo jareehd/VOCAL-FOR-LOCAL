@@ -44,7 +44,7 @@ export class UpdateProfile extends Component {
       x: 50,
       y: 50,
       width: 100,
-      aspect: 4 / 3
+      aspect: 1
     }
   };
 
@@ -110,7 +110,7 @@ export class UpdateProfile extends Component {
   const scaleX = image.naturalWidth / image.width;
   const scaleY = image.naturalHeight / image.height;
   canvas.width = crop.width;
-  canvas.height = crop.width *0.75 ;
+  canvas.height = crop.width ;
   const ctx = canvas.getContext("2d");
   
   // console.log(crop)
@@ -120,11 +120,11 @@ export class UpdateProfile extends Component {
       crop.x * scaleX,
       crop.y * scaleY,
       crop.width * scaleX,
-      crop.width  * scaleY * 0.75,
+      crop.width  * scaleY ,
       0,
       0,
       crop.width,
-      crop.width * 0.75
+      crop.width 
    );
   
   const reader = new FileReader()
