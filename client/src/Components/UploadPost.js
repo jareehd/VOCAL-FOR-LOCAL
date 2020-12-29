@@ -154,12 +154,12 @@ export class UploadPost extends Component {
                 id="outlined-basic"
                 label="State"
                 variant="outlined"
-                style={{ width: "300px" }}
+                
                 select
                 onChange={this.handleChange("state")}
               >
                 {StateCity.state.states.map((state, index) => (
-                  <MenuItem key={state.id} value={state}>
+                  <MenuItem  key={state.id} value={state}>
                     {" "}
                     {state.name}{" "}
                   </MenuItem>
@@ -171,7 +171,7 @@ export class UploadPost extends Component {
                 id="outlined-basic"
                 label="City"
                 variant="outlined"
-                style={{ width: "300px" }}
+                
                 select
                 onChange={this.handleChange("city")}
               >

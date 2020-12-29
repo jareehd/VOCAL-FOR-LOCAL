@@ -1,14 +1,18 @@
-import './App.css';
-import SignIn from './Components/SignIn'
-import SignUp from './Components/SignUp'
+import "./App.css";
 import { HashRouter as Router, Switch } from "react-router-dom";
+import SignUp from "./Components/SignUp";
+import SignIn from "./Components/SignIn";
+import LandingPage from "./Components/LandingPage";
 import { LoginPrivateRoute } from "./Components/LoginPrivateRoute";
 import { PrivateRoute } from "./Components/PrivateRoute";
-import LandingPage from "./Components/LandingPage";
-import Header from './Components/Header';
-import MyProfile from './Components/MyProfile';
-import UploadPost from "./Components/UploadPost";
 import UpdateProfile from "./Components/UpdateProfile";
+import MyProfile from './Components/MyProfile'
+import UploadPost from "./Components/UploadPost";
+import DisplayPostCard from "./Components/DisplayPostCard";
+import DisplayPostGrid from './Components/DisplayPostGrid';
+import Header from './Components/Header';
+import './styles/styles.scss'
+import AboutUs from "./Components/AboutUs";
 
 function App() {
   return (
@@ -19,13 +23,16 @@ function App() {
           <LoginPrivateRoute path="/register" component={SignUp} />
           <Router>
           <Header/>
-           <Switch>
+          <Switch>
            <PrivateRoute path="/landingpage" component={LandingPage} />
-           <PrivateRoute path="/profile" component={MyProfile}/>
            <PrivateRoute path="/update" component={UpdateProfile}/>
+           <PrivateRoute path="/profile" component={MyProfile}/>
            <PrivateRoute path="/upload" component={UploadPost}/>
-           </Switch>
+           <PrivateRoute path="/display" component={DisplayPostGrid} />
+           <PrivateRoute path="/aboutus" component={AboutUs} />
+          </Switch>
           </Router>
+         
         </Switch>
       </Router>
     </div>

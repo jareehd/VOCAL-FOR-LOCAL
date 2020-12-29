@@ -11,6 +11,8 @@ export const Link = {
     MyProfileUrl: url+"/users/profile",
     UpdateProfileUrl: url +"/users",
     UploadPostUrl: url+"/blogs",
+    UploadLikeUrl: url+"/blogs/",
+    
 
   },
 };

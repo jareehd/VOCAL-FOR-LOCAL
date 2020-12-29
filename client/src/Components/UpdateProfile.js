@@ -1,14 +1,19 @@
 import React, { Component } from "react";
 import { Button, Grid, InputAdornment, TextField } from "@material-ui/core";
-import { Redirect } from 'react-router'
+import { Redirect } from "react-router";
 import { LockRounded } from "@material-ui/icons";
 import "./UpdateProfile.css";
 import axios from "axios";
 import * as UpdateProfileLink from "../Constant";
-import imageCompression from 'browser-image-compression'
+
+import imageCompression from "browser-image-compression";
+import MenuItem from "@material-ui/core/MenuItem";
+import * as StateCity from "../StateCity";
+
 import ReactCrop from 'react-image-crop';
 import 'react-image-crop/lib/ReactCrop.scss';
            
+
 export class UpdateProfile extends Component {
 
   // constructor(props){
@@ -18,18 +23,22 @@ export class UpdateProfile extends Component {
   // }
 
   state = {
+
     profileImg:null,
     profileImgUrl:"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
     croppedImgUrl:null,
+
     firstName: null,
     lastName: null,
     age: null,
     sex: null,
-    location: null,
+    state: StateCity.state.states[0],
+
+    city: "",
     password: null,
     confirmPassword: null,
-    cropProcess:0,  // o when no image selected ,1 when image is on crop , 2 when we have cropped the image
-    redirect:false,
+
+    redirect: false,
     crop: {
       unit: 'px', 
       x: 50,
@@ -37,6 +46,16 @@ export class UpdateProfile extends Component {
       width: 100,
       aspect: 4 / 3
     }
+  };
+
+ 
+  handleChange = (input) => (e) => {
+    this.setState({ [input]: e.target.value });
+
+      // o when no image selected ,1 when image is on crop , 2 when we have cropped the image
+    
+    
+    
   };
  
   imageHandler = async (image) => {
@@ -46,6 +65,7 @@ export class UpdateProfile extends Component {
     const output = await imageCompression(image, options)
     this.setState({profileImg:output})
     this.setState({profileImgUrl:URL.createObjectURL(output)})
+
   };
 
   handleCropImage = async (e) => {
@@ -121,7 +141,7 @@ export class UpdateProfile extends Component {
       alert("Password did not match");
     else {
       let formData = new FormData();
-      if ( this.state.profileImg !== null) {
+      if (this.state.profileImg !== null) {
         formData.append("avatar", this.state.profileImg);
       }
       if (this.state.firstName !== null) {
@@ -139,6 +159,11 @@ export class UpdateProfile extends Component {
       if (this.state.sex !== null) {
         formData.append("sex", this.state.sex);
       }
+      if (this.state.city !== "") {
+        formData.append("state", this.state.state.name);
+        formData.append("city", this.state.city);
+      }
+
       const token = localStorage.getItem("token");
 
       const config = {
@@ -153,8 +178,8 @@ export class UpdateProfile extends Component {
         .patch(url, formData, config)
         .then((response) => {
           this.setState({
-            redirect:true
-          })
+            redirect: true,
+          });
           alert(response.data);
         })
         .catch((error) => {
@@ -163,9 +188,14 @@ export class UpdateProfile extends Component {
     }
   };
   render() {
+
+    
+
+
     const { profileImg , profileImgUrl ,cropProcess ,crop,croppedImgUrl } = this.state;
     if(this.state.redirect)
     {
+
       return <Redirect push to="/profile" />;
     }
     else if(cropProcess == 1 ){
@@ -193,8 +223,14 @@ export class UpdateProfile extends Component {
         <div className="Updatecontainer">
           <h1 className="Updateheading">Update Profile</h1>
           <div className="Updateimg-holder">
-           <img src={profileImgUrl} alt="" id="Updateimg" className="Updateimg" /> 
-            
+
+            <img
+              src={profileImgUrl}
+              alt=""
+              id="Updateimg"
+              className="Updateimg"
+            />
+
           </div>
 
           <input
@@ -247,13 +283,42 @@ export class UpdateProfile extends Component {
                   this.setState({ lastName: event.target.value });
                 }}
               />
+              <div style={{ height: 20 }} />
               <TextField
-                label="Location"
-                margin="normal"
-                onChange={(event) => {
-                  this.setState({ location: event.target.value });
-                }}
-              />
+                className="TextField"
+                id="outlined-basic"
+                label="State"
+                variant="outlined"
+                style={{ width: "300px" }}
+                select
+                onChange={this.handleChange("state")}
+              >
+                {StateCity.state.states.map((state, index) => (
+                  <MenuItem key={state.id} value={state}>
+                    {" "}
+                    {state.name}{" "}
+                  </MenuItem>
+                ))}
+              </TextField>
+
+              <div style={{ height: 20 }} />
+              <TextField
+                className="TextField"
+                id="outlined-basic"
+                label="City"
+                variant="outlined"
+                style={{ width: "300px" }}
+                select
+                onChange={this.handleChange("city")}
+              >
+                {this.state.state.districts.map((city, index) => (
+                  <MenuItem key={city.id} value={city.name}>
+                    {" "}
+                    {city.name}{" "}
+                  </MenuItem>
+                ))}
+              </TextField>
+
               <TextField
                 label="Sex"
                 margin="normal"

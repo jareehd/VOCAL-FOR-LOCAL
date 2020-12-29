@@ -67,7 +67,11 @@ function MyProfile() {
             <br/>
             {user.email}
             <br/>
-                {getLocation(user.location)}
+
+            
+            
+            From {user.city + "," + user.state}
+
             <br/>
             {user.sex}
             </div>
