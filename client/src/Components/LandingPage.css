@@ -13,3 +13,14 @@
 h1{
     font-family: cursive;
 }
+.MainContainer{
+    flex-direction: row;
+}
+
+@media only screen and (max-width: 600px){
+    
+    
+    .MainContainer{
+        flex-direction: column-reverse;
+    }
+    }

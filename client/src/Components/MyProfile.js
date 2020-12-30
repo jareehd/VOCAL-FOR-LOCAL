@@ -7,6 +7,7 @@ function MyProfile() {
 
   const [user,setUser]= useState({});
   const [ImageUrl,setImageUrl] = useState(null);
+  const [loading,setLoading] = useState(true);
     useEffect(()=>{
         const url = MyProfileLink.Link.baseUrl.MyProfileUrl
         const authAxios = axios.create({
@@ -31,6 +32,7 @@ function MyProfile() {
             try {
               const result = await authAxios.get();
               setUser(result.data)
+              setLoading(false);
               if(!!result.data.avatar) setProfileImage(result.data.avatar.data)
             }
             catch (error) {
@@ -50,7 +52,9 @@ function MyProfile() {
       if(location) return <p>From {location}</p> 
     }
 
-    return (
+    return loading ? (
+      <h1> Loading... </h1>
+    ) :(
         <div className="ProfileDiv">
         <h1 className="ProfileHeader">My Profile</h1>
         <br/>

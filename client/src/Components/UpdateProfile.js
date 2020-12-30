@@ -25,7 +25,7 @@ export class UpdateProfile extends Component {
   state = {
 
     profileImg:null,
-    profileImgUrl:"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
+    profileImgUrl:"https://i.stack.imgur.com/l60Hf.png",
     croppedImgUrl:null,
 
     firstName: null,

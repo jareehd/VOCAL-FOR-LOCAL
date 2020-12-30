@@ -60,8 +60,8 @@ const LandingPage = () => {
   return loading ? (
     <h1> Loading... </h1>
   ) : (
-    <Grid container>
-      <Grid item xs={9}>
+    <Grid container className="MainContainer" >
+      <Grid item xs={12} sm={9}>
         <section
           className="cards"
           
@@ -77,7 +77,7 @@ const LandingPage = () => {
           ))}
         </section>
       </Grid>
-      <Grid item xs={3} className="SideLocation" style={{ backgroundColor: "black", padding: "1.6rem" }}>
+      <Grid item xs={12} sm={3} className="SideLocation" style={{ backgroundColor: "black", padding: "1.6rem" }}>
         <h2 style={{ color: "white" }}> Select Location</h2>
         <div style={{ height: 40 }} />
         <TextField
