@@ -37,11 +37,14 @@ router.get("/blogs", auth, async (req, res) => {
 
     const id = req.user._id.toString();
 
-    blob = blog.forEach((item) => {
+   blog.forEach((item) => {
       item.liked = item.likes.some((e) => {
         return e.likedBy == id;
       });
     });
+
+    blog.reverse()
+
     // console.log(blog)
     res.send(blog);
   } catch (e) {
