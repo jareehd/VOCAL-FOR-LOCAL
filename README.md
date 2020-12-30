@@ -15,12 +15,6 @@ Here comes a new app for overcoming the needs of social interaction which vanish
 Lockdown just not only ruined the social interaction but also effected the one's who helped in creating sweet memories(the street food vendors and the rest street talents out there) .So now here we are with our app very much focused for creating memories and helping you to share  updated news regarding you and you friends again chilling and making memories with your favourite street performers (could be the musicians ,street food stalls , dancers , painters...) in your favourite areas . With this app we would help you to again start creating memories and with your post we love to help the street vendors and the rest street performers getting that old charm again
 
 
-## Authors
-
-Dheeraj Maurya | 
-Nikhil Chopra | 
-Shubhankar Saxena
-![Home](./Screenshots/AboutUs.png?raw=true "AboutUs")
 
 ## Youtube
 
@@ -40,5 +34,19 @@ npm start
 
 node should be locally present in the device
 
+##LogIn
+![LogIn](./Screenshots/Login.png?raw=true "LogIn")
+
+##SignUp
+![SignUp](./Screenshots/SignUp.png?raw=true "SignUp")
+
+
+
+## Authors
+
+Dheeraj Maurya | 
+Nikhil Chopra | 
+Shubhankar Saxena
+![AboutUs](./Screenshots/AboutUs.png?raw=true "AboutUs")
 
 
