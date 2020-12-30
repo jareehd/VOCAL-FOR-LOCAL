@@ -40,7 +40,17 @@ node should be locally present in the device
 ## SignUp
 ![SignUp](./Screenshots/SignUp.png?raw=true "SignUp")
 
+## My Profile
+![MyProfile](./Screenshots/MyProfile.png?raw=true "MyProfile")
 
+## Update Profile
+![UpdateProfile](./Screenshots/UpdateProfile.png?raw=true "UpdateProfile")
+
+## My Posts
+![MyPosts](./Screenshots/MyPosts.png?raw=true "MyPosts")
+
+## Upload Post
+![UploadPost](./Screenshots/UploadPost.png?raw=true "UploadPost")
 
 ## Authors
 
