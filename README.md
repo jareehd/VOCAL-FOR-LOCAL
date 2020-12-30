@@ -1,2 +1,2 @@
 # VOCAL-FOR-LOCAL
-![Home](relative/path/to/Home.png?raw=true "Home")
+![Home](./Screenshots/Home.png?raw=true "Home")
