@@ -12,7 +12,7 @@ import imageCompression from 'browser-image-compression'
 export class UploadPost extends Component {
   state = {
     profileImg: null,
-    profileImgUrl:"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
+    profileImgUrl:"https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg",
     title: null,
     description: null,
 
@@ -103,7 +103,7 @@ export class UploadPost extends Component {
       <div className="Updatepage">
         <div className="Updatecontainer">
           <h1 className="Updateheading">
-            Hola!! Don't Hesitate to Post What's on your freaking Mind
+            Hola!! Don't Hesitate to Post for Locals Near You
           </h1>
           <div style={{ height: 20 }} />
           <div style={{ height: 20 }} />
@@ -122,8 +122,8 @@ export class UploadPost extends Component {
 
           <div style={{ height: 20 }} />
 
-          <div className="Updateimg-holder">
-            <img src={profileImgUrl} alt="" id="Updateimg" className="Updateimg" />
+          <div className="Updateimg-holder1">
+            <img src={profileImgUrl} alt="" id="Updateimg1" className="Updateimg1" />
           </div>
           <input
             type="file"
@@ -132,10 +132,10 @@ export class UploadPost extends Component {
             id="Updateinput"
             onChange={this.imageHandler}
           />
-          <div className="Updatelabel">
+          <div className="Updatelabel1">
             <Button variant="contained">
               <label className="Updateimage-upload" htmlFor="Updateinput">
-                Upload a Pic that justifies your mood
+                Attatch a Pic for Support
               </label>
             </Button>
           </div>
@@ -218,7 +218,7 @@ export class UploadPost extends Component {
             ></div>
           </Grid>
 
-          <div style={{ height: 20 }} />
+          
                {/* <TextField        className="TextField"
                                  id="outlined-basic"
                                  label="State"
@@ -270,7 +270,7 @@ export class UploadPost extends Component {
             color="primary"
             variant="contained"
             onClick={(e) => this.submit(e)}
-            style={{ width: "550px" }}
+            className="UploadPostButton"
           >
             Upload
           </Button>

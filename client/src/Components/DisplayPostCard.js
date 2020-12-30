@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
       width: 350
       },
       [theme.breakpoints.down("xs")] : {
-        width: 250 
+        width: 300 
         },
   },
   media: {
