@@ -34,10 +34,10 @@ npm start
 
 node should be locally present in the device
 
-##LogIn
+## LogIn
 ![LogIn](./Screenshots/Login.png?raw=true "LogIn")
 
-##SignUp
+## SignUp
 ![SignUp](./Screenshots/SignUp.png?raw=true "SignUp")
 
 
