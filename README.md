@@ -5,17 +5,6 @@
 
 Vocal For Local - Talent Hunt
 
-## Getting Started
-
-npm install 
-npm start
-cd client && npm install
-npm start
-
-
-## Prerequisites
-
-node should be locally present in the device
 
 ## Theme
 
@@ -38,4 +27,18 @@ Shubhankar Saxena
 ## Working Site
 
 https://vocal-for-locals.herokuapp.com/
+
+## Getting Started
+
+npm install 
+npm start
+cd client && npm install
+npm start
+
+
+## Prerequisites
+
+node should be locally present in the device
+
+
 
