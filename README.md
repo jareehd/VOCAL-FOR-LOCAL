@@ -3,7 +3,7 @@
 
 # Project Title
 
-Talent Hunt
+Vocal For Local - Talent Hunt
 
 ## Getting Started
 
@@ -31,6 +31,7 @@ Lockdown just not only ruined the social interaction but also effected the one's
 Dheeraj Maurya
 Nikhil Chopra
 Shubhankar Saxena
+![Home](./Screenshots/AboutUs.png?raw=true "AboutUs")
 
 ## Youtube
 https://youtu.be/J1ODIovhBPc
