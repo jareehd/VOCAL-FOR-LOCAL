@@ -28,8 +28,8 @@ Lockdown just not only ruined the social interaction but also effected the one's
 
 ## Authors
 
-Dheeraj Maurya
-Nikhil Chopra
+Dheeraj Maurya | 
+Nikhil Chopra | 
 Shubhankar Saxena
 ![Home](./Screenshots/AboutUs.png?raw=true "AboutUs")
 
