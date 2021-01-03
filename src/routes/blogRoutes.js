@@ -13,6 +13,17 @@ router.get("/blogs/me", auth, async (req, res) => {
         path: "blogs",
       })
       .execPopulate();
+
+      const id = req.user._id.toString();
+      
+      req.user.blogs.forEach((blog)=>{
+        blog.liked = blog.likes.some((e)=>{
+          return (e.likedBy==id)
+        })
+      })
+      
+      req.user.blogs.reverse()
+
     res.send(req.user.blogs);
   } catch (e) {
     res.status(404).send(e);

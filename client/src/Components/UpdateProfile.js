@@ -43,7 +43,7 @@ export class UpdateProfile extends Component {
       unit: 'px', 
       x: 50,
       y: 50,
-      width: 100,
+      width: 300,
       aspect: 1
     }
   };

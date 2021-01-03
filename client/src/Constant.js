@@ -1,5 +1,5 @@
 //  var url = 'http://localhost:5000'
-var url =''
+var url = ''
 export const Link = {
   baseUrl: {
     LogInUrl: url + "/login",
@@ -7,12 +7,11 @@ export const Link = {
    
     MyPostsUrl:url+"/blogs/me",
     AllPostsUrl:url+"/blogs",
-   
+           
     MyProfileUrl: url+"/users/profile",
     UpdateProfileUrl: url +"/users",
     UploadPostUrl: url+"/blogs",
     UploadLikeUrl: url+"/blogs/",
     
-
   },
 };
