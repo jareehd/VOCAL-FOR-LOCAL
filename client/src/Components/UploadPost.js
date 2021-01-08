@@ -8,6 +8,9 @@ import * as UploadPostLink from "../Constant";
 import * as StateCity from '../StateCity';
 import imageCompression from 'browser-image-compression'
 
+import ReactCrop from 'react-image-crop';
+import 'react-image-crop/lib/ReactCrop.scss';
+
 
 export class UploadPost extends Component {
   state = {
@@ -15,12 +18,21 @@ export class UploadPost extends Component {
     profileImgUrl:"https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg",
     title: null,
     description: null,
-
+    
     redirect:false,
     state: StateCity.state.states[0],
     city: "",
-    
 
+    cropProcess:0,
+
+    croppedImgUrl:null,
+    crop: {
+      unit: 'px', 
+      x: 50,
+      y: 50,
+      width: 300,
+      aspect: 16/9
+    }
   };
   
   handleChangeState = (e) => {
@@ -32,17 +44,83 @@ export class UploadPost extends Component {
     this.setState({ city: e.target.value });
   };
 
-  imageHandler = async (e) => {
-    const image = e.target.files[0]
+   imageHandler = async (image) => {
     var options = {
       maxSizeMB: 0.2
     }
-
     const output = await imageCompression(image, options)
-    console.log(output)
     this.setState({profileImg:output})
     this.setState({profileImgUrl:URL.createObjectURL(output)})
+
   };
+
+  handleCropImage = async (e) => {
+    const image = e.target.files[0]
+    this.setState({
+      cropProcess:1,
+      profileImg:image,
+      croppedImgUrl:URL.createObjectURL(image)
+    })
+  }
+
+  onCropChange = (crop) => {
+    this.setState( () =>{
+     return {crop:crop} 
+    });
+    this.getCroppedImg(crop);
+  }
+
+  onCropComplete =  crop  => {
+      this.setState({cropProcess:2});
+  }
+
+  dataURLtoFile(dataurl, filename) {
+    let arr = dataurl.split(','),
+        mime = arr[0].match(/:(.*?);/)[1],
+        bstr = atob(arr[1]), 
+        n = bstr.length, 
+        u8arr = new Uint8Array(n);
+            
+    while(n--){
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    let profileImg = new File([u8arr], filename, {type:mime});
+    this.imageHandler(profileImg)
+  }
+
+  getCroppedImg( crop) {
+  const image = new Image()
+  image.src = this.state.croppedImgUrl 
+  // const aspect  = this.state.aspect
+  const canvas = document.createElement("canvas");
+  const scaleX = image.naturalWidth / image.width;
+  const scaleY = image.naturalHeight / image.height;
+  canvas.width = crop.width;
+  canvas.height = crop.width*0.5625 ;
+  const ctx = canvas.getContext("2d");
+  
+  // console.log(crop)
+
+  ctx.drawImage(
+      image,
+      crop.x * scaleX,
+      crop.y * scaleY,
+      crop.width * scaleX,
+      crop.width  * scaleY*0.5625 ,
+      0,
+      0,
+      crop.width,
+      crop.width *0.5625
+   );
+  
+  const reader = new FileReader()
+  canvas.toBlob(blob => {
+      reader.readAsDataURL(blob)
+      reader.onloadend = () => {
+          this.dataURLtoFile(reader.result, 'cropped.jpg')
+      }
+    })
+  } 
 
   submit = (e) => {
       
@@ -94,11 +172,33 @@ export class UploadPost extends Component {
   };
 
   render() {
-    const { profileImgUrl , profileImg , title, description , state , city } = this.state;
+    const { profileImgUrl , profileImg , title, description , state , city , cropProcess ,crop,croppedImgUrl} = this.state;
+    console.log(cropProcess)
     if(this.state.redirect)
     {
       return <Redirect push to="/landingpage" />;
     }
+    else if(cropProcess == 1){
+      return (
+      <div>
+      {console.log("Hello")}
+      <ReactCrop
+                  src={croppedImgUrl} 
+                  crop = {crop}
+                  onChange={this.onCropChange}
+      /> 
+                 
+          <Button
+          color="primary"
+          variant="contained"
+          onClick={this.onCropComplete }
+          >
+          Crop
+      </Button>
+    </div>
+      )
+    } 
+    else{
     return (
       <div className="Updatepage">
         <div className="Updatecontainer">
@@ -130,7 +230,7 @@ export class UploadPost extends Component {
             accept="image/*"
             name="image-upload"
             id="Updateinput"
-            onChange={this.imageHandler}
+            onChange = {this.handleCropImage} 
           />
           <div className="Updatelabel1">
             <Button variant="contained">
@@ -279,6 +379,7 @@ export class UploadPost extends Component {
       </div>
     );
   }
+}
 }
 
 export default UploadPost;

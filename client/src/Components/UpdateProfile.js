@@ -34,6 +34,8 @@ export class UpdateProfile extends Component {
     sex: null,
     state: StateCity.state.states[0],
 
+    cropProcess:0,
+
     city: "",
     password: null,
     confirmPassword: null,
@@ -193,6 +195,7 @@ export class UpdateProfile extends Component {
 
 
     const { profileImg , profileImgUrl ,cropProcess ,crop,croppedImgUrl } = this.state;
+   
     if(this.state.redirect)
     {
 
